@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Docker login
+      env: 
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: docker login -u $DOCKER_USERNAME --password-stdin
+    - name: Build Docker image
+      run: docker build . --file Dockerfile --tag scubakay/tmodloader:0.11.5
+    - name: Deploy Docker image
+      run: docker push scubakay/tmodloader:0.11.5
