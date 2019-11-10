@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+    terraria1:
+        image: scubakay/tmodloader:0.11.5
+        ports:
+        - "7777:7777"
