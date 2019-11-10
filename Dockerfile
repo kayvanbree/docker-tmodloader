@@ -38,4 +38,4 @@ RUN \
 EXPOSE 7777
 
 # start server
-CMD [ "/terraria-server/Linux/tModLoaderServer" ]
+CMD [ "/terraria-server/Linux/tModLoaderServer -config server.txt" ]
